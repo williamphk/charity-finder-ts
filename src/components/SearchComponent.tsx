@@ -92,17 +92,33 @@ const SearchComponent: React.FC<SearchComponentProps> = ({}) => {
     setSearchResults(results);
   };
 
+  const handleSearchResultClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const target = event.target as HTMLButtonElement;
+    const result = target.value;
+    setSearchTerm(result);
+    setSearchResults([]);
+  };
+
   return (
-    <div>
+    <div className="search-component">
       <input type="text" value={searchTerm} onChange={handleSearchTermChange} />
       <button>Search</button>
-      <div className="autocomplete-results">
-        {searchResults.map((result, index) => (
-          <div key={index} className="autocomplete-result">
-            {result}
-          </div>
-        ))}
-      </div>
+      {searchResults.length > 0 && (
+        <div className="autocomplete-results">
+          {searchResults.map((result, index) => (
+            <button
+              key={index}
+              className="autocomplete-result"
+              value={result}
+              onClick={handleSearchResultClick}
+            >
+              {result}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
