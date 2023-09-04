@@ -10,7 +10,13 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <SearchComponent />
+      <header>
+        <h1>Charity Finder</h1>
+        <SearchComponent />
+        <div className="favorite">
+          <a href="/favorites">Favorites</a>
+        </div>
+      </header>
       <Routes>
         <Route path="/" element={<CharityList />} />
         <Route path="/charity/:id" element={<CharityDetail />} />

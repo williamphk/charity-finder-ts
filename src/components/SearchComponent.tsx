@@ -103,7 +103,12 @@ const SearchComponent: React.FC<SearchComponentProps> = ({}) => {
 
   return (
     <div className="search-component">
-      <input type="text" value={searchTerm} onChange={handleSearchTermChange} />
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={handleSearchTermChange}
+        placeholder="Find a charity..."
+      ></input>
       <button>Search</button>
       {searchResults.length > 0 && (
         <div className="autocomplete-results">
