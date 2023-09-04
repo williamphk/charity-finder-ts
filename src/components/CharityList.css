@@ -1,8 +1,12 @@
 /* Container for the list of charities */
+.search-results {
+  margin-top: 20px;
+}
+
 .charity-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 20px;
+  margin: 10px;
   gap: 20px;
   column-gap: 40px;
 }

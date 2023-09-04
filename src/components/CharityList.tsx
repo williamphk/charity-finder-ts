@@ -11,26 +11,32 @@ interface CharityListProps {
 
 const CharityList: React.FC<CharityListProps> = ({ charities, searchTerm }) => {
   return (
-    <div className="charity-list">
-      <div>Search results for:{searchTerm}</div>
-      {charities.map((charity) => (
-        <div key={charity.ein} className="charity-item">
-          <Link to={`/charity/${charity.ein}`}>
-            <img
-              src={
-                charity.logoUrl ||
-                "https://charity-finder.vitochan.com/assets/donateLogo-96b99806.svg"
-              }
-              alt={`${charity.name} logo`}
-              className="logo"
-            />
-            <div className="details">
-              <div className="name">{charity.name}</div>
-              <div className="location">{charity.location}</div>
-            </div>
-          </Link>
+    <div>
+      {charities.length > 0 && (
+        <div>
+          <div className="search-results">Search results for:{searchTerm}</div>
+          <div className="charity-list">
+            {charities.map((charity) => (
+              <div key={charity.ein} className="charity-item">
+                <Link to={`/charity/${charity.ein}`}>
+                  <img
+                    src={
+                      charity.logoUrl ||
+                      "https://charity-finder.vitochan.com/assets/donateLogo-96b99806.svg"
+                    }
+                    alt={`${charity.name} logo`}
+                    className="logo"
+                  />
+                  <div className="details">
+                    <div className="name">{charity.name}</div>
+                    <div className="location">{charity.location}</div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
+      )}
     </div>
   );
 };
