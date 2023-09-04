@@ -25,6 +25,17 @@ const CharityDetail: React.FC = () => {
       });
   }, [id]);
 
+  const handleSaveToFavorites = () => {
+    const favoriteCharities = JSON.parse(
+      localStorage.getItem("favoriteCharities") || "[]"
+    );
+    favoriteCharities.push(charity);
+    localStorage.setItem(
+      "favoriteCharities",
+      JSON.stringify(favoriteCharities)
+    );
+  };
+
   if (!charity) {
     return <div>Loading...</div>;
   }
@@ -41,6 +52,7 @@ const CharityDetail: React.FC = () => {
       <h1>{charity.name}</h1>
       <p>{charity.description}</p>
       <p>{charity.location}</p>
+      <button onClick={handleSaveToFavorites}>Save to Favorites</button>
     </div>
   );
 };
