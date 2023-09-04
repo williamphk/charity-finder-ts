@@ -14,10 +14,15 @@ function App() {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [searchResults, setSearchResults] = useState<Charity[]>([]);
 
+  const handleLogoClick = () => {
+    setSearchTerm("");
+    setSearchResults([]);
+  };
+
   return (
     <Router>
       <header>
-        <Link to="/">
+        <Link to="/" onClick={handleLogoClick}>
           <h1>Charity Finder</h1>
         </Link>
         <SearchComponent
