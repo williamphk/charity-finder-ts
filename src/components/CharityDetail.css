@@ -1,0 +1,26 @@
+.charity-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.charity-detail img {
+  max-width: 5%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.charity-detail h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 20px 0;
+}
+
+.charity-detail p {
+  font-size: 1.2rem;
+  color: #555;
+  text-align: center;
+}
+
+/* ... add other styles */
