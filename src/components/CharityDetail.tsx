@@ -9,6 +9,7 @@ import "./CharityDetail.css";
 const CharityDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [charity, setCharity] = useState<Charity | null>(null);
+  const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
   useEffect(() => {
     axios
@@ -25,16 +26,47 @@ const CharityDetail: React.FC = () => {
       });
   }, [id]);
 
-  const handleSaveToFavorites = () => {
-    const favoriteCharities = JSON.parse(
-      localStorage.getItem("favoriteCharities") || "[]"
-    );
-    favoriteCharities.push(charity);
-    localStorage.setItem(
-      "favoriteCharities",
-      JSON.stringify(favoriteCharities)
-    );
+  useEffect(() => {
+    if (charity) {
+      const favoriteCharities = JSON.parse(
+        localStorage.getItem("favoriteCharities") || "[]"
+      );
+      const alreadyExists = favoriteCharities.some(
+        (favoriteCharity: Charity) => favoriteCharity.ein === charity.ein
+      );
+      setIsFavorite(alreadyExists);
+    }
+  }, [charity]);
+
+  const handleFavBtn = () => {
+    if (!isFavorite) {
+      const favoriteCharities = JSON.parse(
+        localStorage.getItem("favoriteCharities") || "[]"
+      );
+      favoriteCharities.push(charity);
+      localStorage.setItem(
+        "favoriteCharities",
+        JSON.stringify(favoriteCharities)
+      );
+      setIsFavorite(true);
+    } else {
+      if (charity) {
+        const favoriteCharities = JSON.parse(
+          localStorage.getItem("favoriteCharities") || "[]"
+        );
+        const newFavoriteCharities = favoriteCharities.filter(
+          (favoriteCharity: Charity) => favoriteCharity.ein !== charity.ein
+        );
+        localStorage.setItem(
+          "favoriteCharities",
+          JSON.stringify(newFavoriteCharities)
+        );
+        setIsFavorite(false);
+      }
+    }
   };
+
+  useEffect(() => {}, [isFavorite]);
 
   if (!charity) {
     return <div>Loading...</div>;
@@ -52,7 +84,9 @@ const CharityDetail: React.FC = () => {
       <h1>{charity.name}</h1>
       <p>{charity.description}</p>
       <p>{charity.location}</p>
-      <button onClick={handleSaveToFavorites}>Save to Favorites</button>
+      <button onClick={handleFavBtn}>
+        {isFavorite ? "Remove from Favorites" : "Save to Favorites"}
+      </button>
     </div>
   );
 };
