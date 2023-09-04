@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 import "./SearchComponent.css";
 import Charity from "../Charity";
@@ -131,7 +132,9 @@ const SearchComponent: React.FC<SearchComponentProps> = ({
         onChange={handleSearchTermChange}
         placeholder="Find a charity..."
       ></input>
-      <button onClick={handleSearchButtonClick}>Search</button>
+      <Link to="/" onClick={handleSearchButtonClick}>
+        Search
+      </Link>
       {autocompleteResults.length > 0 && (
         <div className="autocomplete-results">
           {autocompleteResults.map((result, index) => (
