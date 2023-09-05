@@ -1,7 +1,13 @@
 {
-    "routes": [
-      { "src": "/(.*\\.(?!html)$)", "headers": { "cache-control": "max-age=31536000, immutable" }, "continue": true },
-      { "src": "/.*", "dest": "/index.html" }
+    "rewrites": [
+      {
+        "source": "/charity/:id",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/favorites",
+        "destination": "/index.html"
+      }
     ]
   }
   
