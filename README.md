@@ -4,7 +4,7 @@ Charity Finder is a React application that allows users to search for charities,
 
 ## Features
 
-- **Search**: Users can search for charities using keywords.
+- **Search**: Users can search for charities using keywords and autocomplete.
 - **Charity Details**: Users can view detailed information about a specific charity including its name, description, location, and logo.
 - **Favorites**: Users can save their favorite charities to a list and view them later. The favorite charities are stored in the local storage.
 
