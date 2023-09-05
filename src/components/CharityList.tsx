@@ -7,14 +7,25 @@ import Charity from "../Charity";
 interface CharityListProps {
   charities: Charity[];
   searchTerm: string;
+  isRandom: boolean;
 }
 
-const CharityList: React.FC<CharityListProps> = ({ charities, searchTerm }) => {
+const CharityList: React.FC<CharityListProps> = ({
+  charities,
+  searchTerm,
+  isRandom,
+}) => {
   return (
     <div>
       {charities.length > 0 && (
         <div>
-          <div className="search-results">Search results for:{searchTerm}</div>
+          {isRandom ? (
+            <div className="random-charity">You May Interest</div>
+          ) : (
+            <div className="search-results">
+              Search results for:{searchTerm}
+            </div>
+          )}
           <div className="charity-list">
             {charities.map((charity) => (
               <div key={charity.ein} className="charity-item">
