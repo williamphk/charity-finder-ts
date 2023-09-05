@@ -1,27 +1,42 @@
-# React + TypeScript + Vite
+# Charity Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Charity Finder is a React application that allows users to search for charities, view detailed information about a specific charity, and save their favorite charities to a list. The application is built using TypeScript and uses the [Every.org API](https://partners.every.org/docs/) to fetch the charity data.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Search**: Users can search for charities using keywords.
+- **Charity Details**: Users can view detailed information about a specific charity including its name, description, location, and logo.
+- **Favorites**: Users can save their favorite charities to a list and view them later. The favorite charities are stored in the local storage.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
 
-- Configure the top-level `parserOptions` property like this:
+git clone https://github.com/williamphk/charity-finder-ts.git
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+2. Change to the project directory:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+cd charity-finder-ts
+
+3. Install the dependencies:
+
+npm install
+
+4. Start the development server:
+
+npm start
+
+The application will be served at `http://localhost:3000/`.
+
+## Deployment
+
+The application can be deployed to Vercel by following these steps:
+
+1. Create a new project on [Vercel](https://vercel.com/).
+2. Connect your GitHub repository.
+3. Add the `VITE_API_KEY` environment variable in the Vercel project settings.
+4. Deploy the application.
+
+## License
+
+MIT
