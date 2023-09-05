@@ -74,16 +74,26 @@ const CharityDetail: React.FC = () => {
 
   return (
     <div className="charity-detail">
-      <img
-        src={
-          charity.logoUrl ||
-          "https://charity-finder.vitochan.com/assets/donateLogo-96b99806.svg"
-        }
-        alt={`${charity.name} logo`}
-      />
-      <h1>{charity.name}</h1>
+      {charity.coverImageUrl && (
+        <img
+          className="cover-image"
+          src={charity.coverImageUrl}
+          alt={`${charity.name} Cover Image`}
+        />
+      )}
+      <div className="charity-header">
+        <img
+          className="logo"
+          src={
+            charity.logoUrl ||
+            "https://charity-finder.vitochan.com/assets/donateLogo-96b99806.svg"
+          }
+          alt={`${charity.name} logo`}
+        />
+        <h1>{charity.name}</h1>
+      </div>
       <p>{charity.description}</p>
-      <p>{charity.location}</p>
+      <p>{charity.locationAddress}</p>
       <button onClick={handleFavBtn}>
         {isFavorite ? "Remove from Favorites" : "Save to Favorites"}
       </button>

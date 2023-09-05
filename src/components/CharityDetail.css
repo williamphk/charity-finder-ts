@@ -5,10 +5,24 @@
   padding: 20px;
 }
 
-.charity-detail img {
-  max-width: 5%;
-  height: auto;
-  border-radius: 10px;
+.charity-detail .cover-image {
+  width: auto;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.charity-detail .charity-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.charity-detail .logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .charity-detail h1 {
@@ -22,5 +36,3 @@
   color: #555;
   text-align: center;
 }
-
-/* ... add other styles */
